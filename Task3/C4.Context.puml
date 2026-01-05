@@ -20,16 +20,14 @@ System_Ext(Telecom, "Телеком-оператор", "")
 
 Rel(Client, Site, "Получение информации, создание заявок")
 Rel(Client, InternetBank, "Получение информации, создание заявок")
-Rel(Site,CallCentre, "Передача заявок")
-Rel(Site,Abs, "Получение данных")
+Rel(Site,InternetBank, "Получение информации, создание заявок")
 Rel(InternetBank,Abs, "Получение данных и обработка заявок")
 Rel(InternetBank,SMSGateway,"СМС уведомления")
 Rel(ManagerCall, CallCentre, "Получение информации, обработка заявок")
 Rel(ManagerDivision, Abs, "Получение информации, обработка депозитов")
 Rel(ManagerBackOffice, Abs, "Управление справочниками, заявками")
-Rel(CallCentre, Abs, "Передача заявок")
+Rel(CallCentre, Abs, "Обработка заявок")
 
-Rel(Abs,SMSGateway,"СМС уведомления")
 Rel(SMSGateway,Telecom,"СМС")
 
 @enduml

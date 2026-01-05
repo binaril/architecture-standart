@@ -1,0 +1,26 @@
+﻿@startuml
+title Банк "Стандарт". Диаграмма контейнеров СМС шлюза
+
+top to bottom direction
+
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml
+
+System(InternetBank, "Интернет-банк", "")
+System(SMSGateway, "СМС шлюз телеком-оператора", "")
+
+System_Ext(Telecom, "Телеком-оператор", "")
+
+Container_Boundary(SMSGateway, "СМС шлюз телеком-оператора") {
+  Container(APIGateway, "API шлюз", "c# .net10", "Для совместимости с ядром интернет-банка")
+  ContainerQueue(SmsQueue, "Очередь СМС", "kafka", "")
+  Container(SMSGatewayService, "Взаимодействие c телеком оператором", "", "Взаимодействие c телеком оператором")    
+}
+
+
+Rel(InternetBank,APIGateway,"СМС уведомления", "")
+Rel(InternetBank,SmsQueue,"СМС уведомления", "kafka")
+Rel(APIGateway,SmsQueue,"СМС уведомления", "kafka")
+Rel(SmsQueue,SMSGatewayService,"Чтение CMC уведомлений", "kafka")
+Rel(SMSGatewayService,Telecom,"СМС")
+
+@enduml

@@ -1,0 +1,32 @@
+﻿@startuml
+title Банк "Стандарт". Диаграмма контейнеров
+
+top to bottom direction
+
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml
+
+Person(Client, "Клиент банка", "")
+
+System(Site, "Сайт", "")
+System(InternetBank, "Интернет-банк", "")
+System(Abs, "АБС", "Автоматизированная банковская система")
+System(SMSGateway, "СМС шлюз телеком-оператора", "")
+
+Container_Boundary(InternetBank, "Интернет-банк") {
+  Container(InternetBankApp, "Интернет-банк", "ASP.NET MVC 4.5", "Монолит, основное web приложение, клиентская компоновка микрофронтендов ")
+  ContainerDb(InternetBankDb, "Интернет-банк БД", "MS SQL", "Основная БД системы Интернет-банк")
+  Container(DepositFront, "Микрофронтенд сервиса депозитов", "React", "")
+  Container(DepositApi, "API сервиса депозитов", "c# .net10", "")
+}
+
+Rel(Client, InternetBankApp, "Получение информации, создание заявок")
+Rel(InternetBankApp, InternetBankDb, "Получение информации, создание заявок", "SQL")
+Rel(InternetBankApp, DepositFront, "Получение информации, создание заявок", "Интеграция микрофронтенда")
+Rel(DepositFront, DepositApi, "Получение информации, создание заявок", "http rest, шифрование трафика")
+Rel(Site,DepositApi, "Получение информации, создание заявок", "http rest, шифрование трафика")
+Rel(DepositApi,Abs, "Получение данных и обработка заявок", "http rest, kafka")
+Rel(InternetBankApp,SMSGateway,"СМС уведомления", "Протокол используемый в ядре")
+Rel(DepositApi,SMSGateway,"СМС уведомления", "kafka")
+
+
+@enduml
