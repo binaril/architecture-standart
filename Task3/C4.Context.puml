@@ -1,22 +1,35 @@
 @startuml
-title Теплый дом. Диаграмма контекста AsIs 
+title Банк "Стандарт". Открытие депозитов онлайн
 
 top to bottom direction
 
 !includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml
 
-Person(user, "Пользователь", "Пользователь системы умный дом")
-Person(admin, "Администратор", "Администратор системы умный дом")
-System(SmartHouse, "система Умный дом", "Система управления отоплением домов")
+Person(Client, "Клиент банка", "")
+Person(ManagerCall, "Менеджер кол-центра", "")
+Person(ManagerDivision, "Менеджер сети отделений", "")
+Person(ManagerBackOffice, "Менеджер бэк-офиса", "")
 
-System_Ext(TemperatureDevice, "Датчики температуры", "")
-System_Ext(SmartDevice, "Регуляторы отопления", "")
-System_Ext(PaidService, "Сервис оплаты", "")
+System(Site, "Сайт", "")
+System(InternetBank, "Интернет-банк", "")
+System(Abs, "АБС", "Автоматизированная банковская система")
+System(CallCentre, "Система кол-центра", "")
+System(SMSGateway, "СМС шлюз телеком-оператора", "")
 
-Rel(user, SmartHouse, "Управляет устройствами своего дома")
-Rel(admin,SmartHouse, "Управляет пользователями и доступом к датчикам")
-Rel(SmartHouse,TemperatureDevice,"Определение состояния")
-Rel(SmartHouse,SmartDevice,"Определение состояние и управление")
-Rel(SmartHouse,PaidService,"Оплата")
+System_Ext(Telecom, "Телеком-оператор", "")
+
+Rel(Client, Site, "Получение информации, создание заявок")
+Rel(Client, InternetBank, "Получение информации, создание заявок")
+Rel(Site,CallCentre, "Передача заявок")
+Rel(Site,Abs, "Получение данных")
+Rel(InternetBank,Abs, "Получение данных и обработка заявок")
+Rel(InternetBank,SMSGateway,"СМС уведомления")
+Rel(ManagerCall, CallCentre, "Получение информации, обработка заявок")
+Rel(ManagerDivision, Abs, "Получение информации, обработка депозитов")
+Rel(ManagerBackOffice, Abs, "Управление справочниками, заявками")
+Rel(CallCentre, Abs, "Передача заявок")
+
+Rel(Abs,SMSGateway,"СМС уведомления")
+Rel(SMSGateway,Telecom,"СМС")
 
 @enduml
