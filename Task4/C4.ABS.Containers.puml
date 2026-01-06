@@ -1,0 +1,55 @@
+﻿@startuml
+title Банк "Стандарт". Диаграмма контейнеров
+
+top to bottom direction
+
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml
+
+
+Person(ManagerDivision, "Менеджер сети отделений", "")
+Person(ManagerBackOffice, "Менеджер бэк-офиса", "")
+
+System(InternetBank, "Интернет-банк", "")
+System(Abs, "АБС", "Автоматизированная банковская система")
+System(CallCentre, "Система кол-центра", "")
+
+System_Ext(PartnerCallCentre, "Партнерский кол-центр", "")
+System_Ext(FileCloud, "Хранилище файлов в облаке", "Актуальные ставки депозитов")
+
+Container_Boundary(Abs, "Автоматизированная банковская система") {
+  Container(DesktopClient, "DesktopClient", "Delphi", "Десктопный клиент")
+  Container(AbsGatewayApi, "АБС Gateway API", "c# .net10", "Шлюз для микросервисов")
+  Container(AbsIntegrationApi, "интеграции АБС", "c# .net10", "Интеграция с микросервисами")
+  ContainerDb(AbsDb, "АБС БД", "Oracle, PL-SQL", "")
+  Container(DepositApi, "Deposit API", "c# .net10", "API для получения доступных депозитов")
+  Container(DepositIntegration, "Deposit Integration", "c# .net10", "Формирование файла депозитов для партнерского центра")
+  Container(RequestApi, "Request API", "c# .net10", "API обработки заявок")
+  ContainerDb(DepositDb, "БД сервиса депозитов", "MS SQL", "")
+  ContainerDb(RequestDb, "БД сервиса обработки заявок", "MS SQL", "")
+  ContainerQueue(RequestQueue, "Очередь изменения статусов заявок", "kafka", "")
+  ContainerQueue(DepositQueue, "Очередь изменения ставок депозитов", "kafka", "")
+}
+
+
+Rel(InternetBank, DepositApi, "Получение данных", "http rest")
+Rel(CallCentre, DepositApi, "Получение данных", "http rest")
+Rel(InternetBank, RequestQueue, "Создание и отслеживание заявки", "kafka")
+Rel(CallCentre, RequestQueue, "Обработка заявки", "kafka")
+Rel(RequestApi, RequestQueue, "Обработка заявки", "kafka")
+Rel(ManagerDivision, DesktopClient, "Получение информации, обработка депозитов")
+Rel(ManagerBackOffice, DesktopClient, "Управление справочниками, заявками")
+Rel(DesktopClient, AbsDb, "Чтение, запись", "SQL, PL-SQL")
+Rel(AbsIntegrationApi, AbsDb, "Чтение, запись", "SQL, PL-SQL")
+Rel(AbsIntegrationApi, RequestQueue, "Обработка заявок", "kafka")
+Rel(DesktopClient, AbsGatewayApi, "Управление депозитами и заявками", "http rest")
+Rel(AbsGatewayApi, DepositApi, "Чтение, запись", "http rest")
+Rel(AbsGatewayApi, RequestApi, "Чтение, запись", "http rest")
+Rel(DepositApi, DepositDb, "Чтение, запись", "SQL")
+Rel(DepositApi, DepositQueue, "Продюсер", "SQL")
+Rel(DepositIntegration, DepositQueue, "Подписчик", "SQL")
+Rel(RequestApi, RequestDb, "Чтение, запись", "SQL")
+
+Rel(DepositIntegration, FileCloud, "Сохранение файл")
+Rel(PartnerCallCentre, FileCloud, "Чтение файла")
+
+@enduml
