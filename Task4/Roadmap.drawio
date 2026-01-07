@@ -1,0 +1,58 @@
+<mxfile host="Electron" modified="2026-01-06T13:56:06.100Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.18 Chrome/120.0.6099.199 Electron/28.1.2 Safari/537.36" etag="1Sg3abGB-2mCyHLdcsyt" version="22.1.18" type="device">
+  <diagram name="Страница — 1" id="_knhMsjVN9GGY0mzNU79">
+    <mxGraphModel dx="2074" dy="1204" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-22" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="240" y="280" width="720" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-23" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="240" y="90" width="720" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-20" value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=none;" vertex="1" parent="1">
+          <mxGeometry x="240" y="530" width="720" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-1" value="Q1" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="240" y="40" width="370" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-5" value="Q2" style="shape=step;perimeter=stepPerimeter;whiteSpace=wrap;html=1;fixedSize=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="600" y="40" width="370" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-8" value="Интернет-банк" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="50" y="90" width="180" height="180" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-9" value="АБС" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="50" y="280" width="180" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-10" value="СМС шлюз" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#f5f5f5;fontColor=#333333;strokeColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="50" y="530" width="180" height="130" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-11" value="Т4 - Разработка микросервиса управления депозитами Deposit API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="247" y="290" width="250" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-12" value="Т6 - Разработка микросервиса обработки заявок Request API" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="497" y="410" width="290" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-13" value="Т7 - Интеграция микросервисов с десктоп клиентом" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="787" y="460" width="160" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-15" value="Т5 - Интеграция Deposit API с облачным хранилищем" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="497" y="340" width="110" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-16" value="Т1 - Фронтенд интернет-банка для формирования заявок по депозитам" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="247" y="100" width="240" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-17" value="Т2 - Микросервис API сервиса депозитов" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="487" y="150" width="230" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-18" value="Т3 - Интеграция с СМС шлюзом" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="717" y="200" width="120" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="pFkFWXVNIy8tO5KWwJJh-19" value="Т8 - API шлюз для упрравления очередью СМС" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;" vertex="1" parent="1">
+          <mxGeometry x="717" y="540" width="160" height="50" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

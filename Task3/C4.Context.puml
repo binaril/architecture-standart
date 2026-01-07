@@ -1,0 +1,33 @@
+@startuml
+title Банк "Стандарт". Открытие депозитов онлайн
+
+top to bottom direction
+
+!includeurl https://raw.githubusercontent.com/RicardoNiepel/C4-PlantUML/master/C4_Component.puml
+
+Person(Client, "Клиент банка", "")
+Person(ManagerCall, "Менеджер кол-центра", "")
+Person(ManagerDivision, "Менеджер сети отделений", "")
+Person(ManagerBackOffice, "Менеджер бэк-офиса", "")
+
+System(Site, "Сайт", "")
+System(InternetBank, "Интернет-банк", "")
+System(Abs, "АБС", "Автоматизированная банковская система")
+System(CallCentre, "Система кол-центра", "")
+System(SMSGateway, "СМС шлюз телеком-оператора", "")
+
+System_Ext(Telecom, "Телеком-оператор", "")
+
+Rel(Client, Site, "Получение информации, создание заявок")
+Rel(Client, InternetBank, "Получение информации, создание заявок")
+Rel(Site,InternetBank, "Получение информации, создание заявок")
+Rel(InternetBank,Abs, "Получение данных и обработка заявок")
+Rel(InternetBank,SMSGateway,"СМС уведомления")
+Rel(ManagerCall, CallCentre, "Получение информации, обработка заявок")
+Rel(ManagerDivision, Abs, "Получение информации, обработка депозитов")
+Rel(ManagerBackOffice, Abs, "Управление справочниками, заявками")
+Rel(CallCentre, Abs, "Обработка заявок")
+
+Rel(SMSGateway,Telecom,"СМС")
+
+@enduml
